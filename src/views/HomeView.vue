@@ -1,5 +1,3 @@
 <template>
-  <main>
-    Home
-  </main>
+  <h1>Home</h1>
 </template>

@@ -1,5 +1,5 @@
 <template>
   <div>
-    About
+    Game of Life
   </div>
 </template>

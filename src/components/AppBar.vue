@@ -3,7 +3,7 @@ const drawer = defineModel('drawer');
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar density="compact">
     <v-app-bar-nav-icon
       variant="text"
       @click.stop="drawer = !drawer"
