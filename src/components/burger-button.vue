@@ -19,7 +19,7 @@
   transition: background-color .3s;
 
   &:hover {
-    background-color: rgba(var(--color-primary), 0.8);
+    background-color: var(--color-primary-alpha-80);
   }
 }
 

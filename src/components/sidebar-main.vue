@@ -3,9 +3,32 @@ type Props = {
   opened: boolean;
 };
 
+type Item = {
+  text: string;
+}
+
 withDefaults(defineProps<Props>(), {
   opened: false,
 });
+
+const items: Item[] = [
+  {
+    text: 'Fractal sets',
+    // module: fractalSets,
+  },
+  {
+    text: 'Game of Life',
+    // module: gameOfLife,
+  },
+  {
+    text: 'Gravity',
+    // module: gravity,
+  },
+  {
+    text: 'Sierpinski triangle',
+    // module: sierpinskiTriangle,
+  },
+]
 </script>
 
 <template>
@@ -14,7 +37,11 @@ withDefaults(defineProps<Props>(), {
       <div :class="$style.logoPre">Pens by</div>
       Yaroslav Gromov
     </div>
-    <div :class="$style.items" />
+    <div :class="$style.items">
+      <div v-for="item in items" :class="$style.item">
+        {{ item.text }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,7 +91,7 @@ withDefaults(defineProps<Props>(), {
   }
 
   &:hover {
-    background-color: rgba(var(--color-gray-500), 0.8);
+    background-color: var(--color-gray-500-alpha-80);
   }
 }
 </style>
