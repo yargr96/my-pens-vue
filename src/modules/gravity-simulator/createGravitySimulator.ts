@@ -1,15 +1,15 @@
-import { assert } from '@/utils/assert.ts'
-import type { Particle } from '@/modules/gravity-simulator/particle.ts'
-import type { Vector } from '@/utils/vector.ts'
-import { COLORS, DEFAULT_CANVAS_SCALE } from '@/constants'
+import { assert } from '@/utils/assert.ts';
+import type { Particle } from '@/modules/gravity-simulator/particle.ts';
+import type { Vector } from '@/utils/vector.ts';
+import { COLORS, DEFAULT_CANVAS_SCALE } from '@/constants';
 import {
   getVectorAngle,
   multiplyVectorByNumber,
   polarToCartesianVector,
-  subtractVector
-} from '@/utils/vector.ts'
-import { getMovedParticle } from '@/modules/gravity-simulator/particle.ts'
-import { getRenderLoop } from '@/utils/getRenderLoop.ts'
+  subtractVector,
+} from '@/utils/vector.ts';
+import { getMovedParticle } from '@/modules/gravity-simulator/particle.ts';
+import { getRenderLoop } from '@/utils/getRenderLoop.ts';
 
 type Params = {
   canvas: HTMLCanvasElement;
@@ -36,22 +36,14 @@ export const createGravitySimulator = ({ canvas, scale = DEFAULT_CANVAS_SCALE }:
     context.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  const isParticleOutOfBounds = (particle: Particle): { x: boolean, y: boolean } => {
-    const isOutOfX = (
-      particle.position[0] + halfParticleSize >= canvas.width
-      && particle.velocity[0] > 0
-    ) || (
-      particle.position[0] - halfParticleSize < 0
-      && particle.velocity[0] < 0
-    );
+  const isParticleOutOfBounds = (particle: Particle): { x: boolean; y: boolean } => {
+    const isOutOfX =
+      (particle.position[0] + halfParticleSize >= canvas.width && particle.velocity[0] > 0) ||
+      (particle.position[0] - halfParticleSize < 0 && particle.velocity[0] < 0);
 
-    const isOutOfY = (
-      particle.position[1] + halfParticleSize >= canvas.height
-      && particle.velocity[1] > 0
-    ) || (
-      particle.position[1] - halfParticleSize < 0
-      && particle.velocity[1] < 0
-    );
+    const isOutOfY =
+      (particle.position[1] + halfParticleSize >= canvas.height && particle.velocity[1] > 0) ||
+      (particle.position[1] - halfParticleSize < 0 && particle.velocity[1] < 0);
 
     return {
       x: isOutOfX,
@@ -103,13 +95,7 @@ export const createGravitySimulator = ({ canvas, scale = DEFAULT_CANVAS_SCALE }:
     context.fillStyle = COLORS.LIGHT;
     particles.forEach(({ position: [x, y] }) => {
       context.beginPath();
-      context.arc(
-        x,
-        y,
-        halfParticleSize,
-        0,
-        Math.PI * 2,
-      );
+      context.arc(x, y, halfParticleSize, 0, Math.PI * 2);
       context.fill();
     });
   });
@@ -122,7 +108,7 @@ export const createGravitySimulator = ({ canvas, scale = DEFAULT_CANVAS_SCALE }:
 
   const onMouseMove = ({ offsetX, offsetY }: MouseEvent) => {
     mouse = multiplyVectorByNumber([offsetX, offsetY], scale);
-  }
+  };
 
   canvas.addEventListener('mousemove', onMouseMove);
 
@@ -131,9 +117,9 @@ export const createGravitySimulator = ({ canvas, scale = DEFAULT_CANVAS_SCALE }:
   const cleanup = () => {
     stop();
     canvas.removeEventListener('mousemove', onMouseMove);
-  }
+  };
 
   return {
     cleanup,
-  }
+  };
 };

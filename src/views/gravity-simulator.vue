@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import CanvasWrapper from '@/components/canvas-wrapper.vue'
-import RenderCanvas from '@/components/render-canvas.vue'
-import { createGravitySimulator } from '@/modules/gravity-simulator'
-import { onBeforeUnmount } from 'vue'
+import CanvasWrapper from '@/components/canvas-wrapper.vue';
+import RenderCanvas from '@/components/render-canvas.vue';
+import { createGravitySimulator } from '@/modules/gravity-simulator';
+import { onBeforeUnmount } from 'vue';
 
 const SCALE = 2;
 
@@ -14,7 +14,7 @@ const onCanvasMounted = (canvas: HTMLCanvasElement) => {
 
 onBeforeUnmount(() => {
   gravitySimulator.cleanup();
-})
+});
 </script>
 
 <template>
