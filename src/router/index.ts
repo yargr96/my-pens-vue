@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import {
   ROUTE_FRACTAL_SETS,
   ROUTE_GAME_OF_LIFE,
-  ROUTE_GRAVITY,
+  ROUTE_GRAVITY_SIMULATOR,
   ROUTE_SIERPINSKI_TRIANGLE,
 } from '@/router/routes.ts';
 
@@ -18,18 +18,22 @@ const router = createRouter({
     {
       path: '/fractal-sets',
       name: ROUTE_FRACTAL_SETS,
+      component: () => import('@/views/fractal-sets.vue'),
     },
     {
       path: '/game-of-life',
       name: ROUTE_GAME_OF_LIFE,
+      component: () => import('@/views/game-of-life.vue'),
     },
     {
-      path: '/gravity',
-      name: ROUTE_GRAVITY,
+      path: '/gravity-simulator',
+      name: ROUTE_GRAVITY_SIMULATOR,
+      component: () => import('@/views/gravity-simulator.vue'),
     },
     {
       path: '/sierpinski-triangle',
       name: ROUTE_SIERPINSKI_TRIANGLE,
+      component: () => import('@/views/sierpinski-triangle.vue'),
     },
   ],
 });

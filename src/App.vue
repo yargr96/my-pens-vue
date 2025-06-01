@@ -3,7 +3,9 @@ import LayoutMain from '@/layouts/layout-main.vue';
 </script>
 
 <template>
-  <LayoutMain />
+  <LayoutMain>
+    <RouterView />
+  </LayoutMain>
 </template>
 
 <style module lang="scss"></style>

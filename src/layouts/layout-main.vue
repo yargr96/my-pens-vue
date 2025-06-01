@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import BurgerButton from "@/components/burger-button.vue";
-import SidebarMain from "@/components/sidebar-main.vue";
+import { ref } from 'vue';
+import BurgerButton from '@/components/burger-button.vue';
+import SidebarMain from '@/components/sidebar-main.vue';
 
 const isSidebarOpened = ref(false);
 </script>
@@ -9,8 +9,14 @@ const isSidebarOpened = ref(false);
 <template>
   <div :class="$style.root">
     <BurgerButton :class="$style.burger" @click="isSidebarOpened = !isSidebarOpened" />
-    <SidebarMain :class="$style.sidebar" :opened="isSidebarOpened" />
-    <div class="content" />
+    <SidebarMain
+      :class="$style.sidebar"
+      :opened="isSidebarOpened"
+      @close="isSidebarOpened = false"
+    />
+    <div class="content">
+      <slot />
+    </div>
   </div>
 </template>
 

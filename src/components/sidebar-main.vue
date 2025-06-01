@@ -2,12 +2,16 @@
 import {
   ROUTE_FRACTAL_SETS,
   ROUTE_GAME_OF_LIFE,
-  ROUTE_GRAVITY,
+  ROUTE_GRAVITY_SIMULATOR,
   ROUTE_SIERPINSKI_TRIANGLE,
 } from '@/router/routes.ts';
 
 type Props = {
   opened: boolean;
+};
+
+type Emits = {
+  close: [];
 };
 
 type Item = {
@@ -19,6 +23,8 @@ withDefaults(defineProps<Props>(), {
   opened: false,
 });
 
+defineEmits<Emits>();
+
 const items: Item[] = [
   {
     text: 'Fractal sets',
@@ -29,8 +35,8 @@ const items: Item[] = [
     routeName: ROUTE_GAME_OF_LIFE,
   },
   {
-    text: 'Gravity',
-    routeName: ROUTE_GRAVITY,
+    text: 'Gravity Simulator',
+    routeName: ROUTE_GRAVITY_SIMULATOR,
   },
   {
     text: 'Sierpinski triangle',
@@ -51,6 +57,7 @@ const items: Item[] = [
         :key="item.routeName"
         :class="$style.item"
         :to="{ name: item.routeName }"
+        @click="$emit('close')"
       >
         {{ item.text }}
       </router-link>
