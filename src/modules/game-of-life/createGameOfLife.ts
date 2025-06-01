@@ -172,6 +172,7 @@ export const createGameOfLife = ({ canvas }: Params) => {
   const cleanup = () => {
     window.removeEventListener('mouseup', handleMouseUp);
     window.removeEventListener('touchend', handleMouseUp);
+    renderLoop.stop();
   };
 
   return {
