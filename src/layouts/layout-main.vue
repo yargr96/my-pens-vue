@@ -14,7 +14,7 @@ const isSidebarOpened = ref(false);
       :opened="isSidebarOpened"
       @close="isSidebarOpened = false"
     />
-    <div class="content">
+    <div :class="$style.content">
       <slot />
     </div>
   </div>
@@ -23,7 +23,7 @@ const isSidebarOpened = ref(false);
 <style module lang="scss">
 .root {
   display: flex;
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
 }
 
