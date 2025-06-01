@@ -16,7 +16,7 @@
   padding: 9px 5px;
   background-color: var(--color-primary);
   cursor: pointer;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: var(--color-primary-alpha-80);
@@ -27,6 +27,6 @@
   height: 2px;
   border-radius: 50px;
   width: 100%;
-  background-color: var(--color-light);;
+  background-color: var(--color-light);
 }
 </style>
