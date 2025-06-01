@@ -1,32 +1,34 @@
-type FramesPerSecond = 'auto' | number;
+export type FramesPerSecond = 'auto' | number;
 
 export type RenderLoop = {
   run: () => void;
   stop: () => void;
   toggle: () => void;
   setFramesPerSecond: (fps: FramesPerSecond) => void;
-}
+};
 
 type RenderLoopParams = {
   framesPerSecond?: FramesPerSecond;
-}
+};
 
 const getTimeout = (framesPerSecond: number): number => 1000 / framesPerSecond;
 
 export const createRenderLoop = () => {
   let loopSingleton: () => void;
 
-  const getRenderLoop = (callback: () => void, {
-    framesPerSecond = 'auto',
-  }: RenderLoopParams = {}): RenderLoop => {
+  const getRenderLoop = (
+    callback: () => void,
+    { framesPerSecond = 'auto' }: RenderLoopParams = {},
+  ): RenderLoop => {
     let isRunning = false;
     let timerId: ReturnType<typeof setTimeout>;
 
-    const getTimeoutFunction = (fps: FramesPerSecond) => (fps === 'auto'
-      ? requestAnimationFrame
-      : (recursiveCallback: () => void): void => {
-        timerId = setTimeout(recursiveCallback, getTimeout(fps));
-      });
+    const getTimeoutFunction = (fps: FramesPerSecond) =>
+      fps === 'auto'
+        ? requestAnimationFrame
+        : (recursiveCallback: () => void): void => {
+            timerId = setTimeout(recursiveCallback, getTimeout(fps));
+          };
 
     let timeoutFunction = getTimeoutFunction(framesPerSecond);
 
@@ -74,9 +76,9 @@ export const createRenderLoop = () => {
       toggle,
       setFramesPerSecond,
     };
-  }
+  };
 
-  return { getRenderLoop }
-}
+  return { getRenderLoop };
+};
 
 export const { getRenderLoop } = createRenderLoop();
