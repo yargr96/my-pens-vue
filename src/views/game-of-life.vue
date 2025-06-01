@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import RenderCanvas from '@/components/render-canvas.vue';
 import CanvasWrapper from '@/components/canvas-wrapper.vue';
+import { createGameOfLife } from '@/modules/game-of-life';
 
-const onCanvasMounted = (e: HTMLCanvasElement) => {
-  console.log(e);
+const onCanvasMounted = (canvas: HTMLCanvasElement) => {
+  createGameOfLife({ canvas });
 };
 </script>
 
