@@ -1,23 +1,37 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import {
+  ROUTE_FRACTAL_SETS,
+  ROUTE_GAME_OF_LIFE,
+  ROUTE_GRAVITY,
+  ROUTE_SIERPINSKI_TRIANGLE,
+} from '@/router/routes.ts';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: HomeView,
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
+    {
+      path: '/',
+      redirect: {
+        name: ROUTE_FRACTAL_SETS,
+      },
+    },
+    {
+      path: '/fractal-sets',
+      name: ROUTE_FRACTAL_SETS,
+    },
+    {
+      path: '/game-of-life',
+      name: ROUTE_GAME_OF_LIFE,
+    },
+    {
+      path: '/gravity',
+      name: ROUTE_GRAVITY,
+    },
+    {
+      path: '/sierpinski-triangle',
+      name: ROUTE_SIERPINSKI_TRIANGLE,
+    },
   ],
-})
+});
 
-export default router
+export default router;

@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import {
+  ROUTE_FRACTAL_SETS,
+  ROUTE_GAME_OF_LIFE,
+  ROUTE_GRAVITY,
+  ROUTE_SIERPINSKI_TRIANGLE,
+} from '@/router/routes.ts';
+
 type Props = {
   opened: boolean;
 };
 
 type Item = {
   text: string;
-}
+  routeName: symbol;
+};
 
 withDefaults(defineProps<Props>(), {
   opened: false,
@@ -14,21 +22,21 @@ withDefaults(defineProps<Props>(), {
 const items: Item[] = [
   {
     text: 'Fractal sets',
-    // module: fractalSets,
+    routeName: ROUTE_FRACTAL_SETS,
   },
   {
     text: 'Game of Life',
-    // module: gameOfLife,
+    routeName: ROUTE_GAME_OF_LIFE,
   },
   {
     text: 'Gravity',
-    // module: gravity,
+    routeName: ROUTE_GRAVITY,
   },
   {
     text: 'Sierpinski triangle',
-    // module: sierpinskiTriangle,
+    routeName: ROUTE_SIERPINSKI_TRIANGLE,
   },
-]
+];
 </script>
 
 <template>
@@ -38,9 +46,14 @@ const items: Item[] = [
       Yaroslav Gromov
     </div>
     <div :class="$style.items">
-      <div v-for="item in items" :class="$style.item">
+      <router-link
+        v-for="item in items"
+        :key="item.routeName"
+        :class="$style.item"
+        :to="{ name: item.routeName }"
+      >
         {{ item.text }}
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -84,14 +97,21 @@ const items: Item[] = [
   padding: 5px 10px;
   cursor: pointer;
   transition: all 0.2s;
+  display: block;
+  text-decoration: none;
+  color: var(--color-light);
 
-  &.active {
+  &:global(.router-link-active) {
     background-color: var(--color-gray-500);
     color: var(--color-dark);
   }
 
   &:hover {
     background-color: var(--color-gray-500-alpha-80);
+  }
+
+  &:visited {
+    color: var(--color-light);
   }
 }
 </style>
