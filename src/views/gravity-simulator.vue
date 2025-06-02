@@ -18,20 +18,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div :class="$style.root">
-    <CanvasWrapper #default="{ size }" :class="$style.canvasWrapper">
-      <RenderCanvas :size="size" :scale="SCALE" @mounted="onCanvasMounted" />
-    </CanvasWrapper>
-  </div>
+  <CanvasWrapper #default="{ size }" :class="$style.root">
+    <RenderCanvas :size="size" :scale="SCALE" @mounted="onCanvasMounted" />
+  </CanvasWrapper>
 </template>
 
 <style module lang="scss">
 .root {
-  width: 100%;
-  height: 100%;
-}
-
-.canvasWrapper {
   width: 100%;
   height: 100%;
 }
