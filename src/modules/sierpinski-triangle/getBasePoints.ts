@@ -2,8 +2,8 @@ import {
   addVectors,
   CLOCK_ANGLE_OFFSET,
   polarToCartesianVector,
-  type Vector
-} from '@/utils/vector.ts'
+  type Vector,
+} from '@/utils/vector.ts';
 
 const CIRCLE_OFFSET = 100;
 
