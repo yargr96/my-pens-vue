@@ -4,7 +4,8 @@ Project to Demonstrate My Code Quality
 A collection of mini-programs with HTML Canvas rendering,
 built as a Vue 3 and TypeScript application.
 
-## The working application is available [here](https://yargr96.github.io/my-pens-deploy/)
+## The working application is available here:
+https://my-pens-vue.vercel.app/fractal-sets
 
 ## Project Setup
 
