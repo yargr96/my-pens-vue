@@ -1,33 +1,11 @@
 import { COLORS } from '@/constants';
-import {
-  type Vector,
-  addVectors,
-  getPointBetween,
-  polarToCartesianVector,
-  CLOCK_ANGLE_OFFSET,
-} from '@/utils/vector';
+import { type Vector, getPointBetween } from '@/utils/vector';
 import { getRenderLoop, type RenderLoop } from '@/utils/getRenderLoop';
 import { assert } from '@/utils/assert.ts';
+import { getBasePoints } from '@/modules/sierpinski-triangle/getBasePoints.ts';
 
 type Params = {
   canvas: HTMLCanvasElement;
-};
-
-const CIRCLE_OFFSET = 100;
-
-const getBasePoints = (count: number, centerCoordinate: Vector): Vector[] => {
-  const radius: number = Math.min(...centerCoordinate) - CIRCLE_OFFSET;
-  const angleStep: number = (2 * Math.PI) / count;
-
-  const basePoints: Vector[] = [];
-
-  for (let i = 0; i < count; i += 1) {
-    const angle = angleStep * i + CLOCK_ANGLE_OFFSET;
-
-    basePoints.push(addVectors(polarToCartesianVector(radius, angle), centerCoordinate));
-  }
-
-  return basePoints;
 };
 
 export const createSierpinskiTriangle = ({ canvas }: Params) => {
